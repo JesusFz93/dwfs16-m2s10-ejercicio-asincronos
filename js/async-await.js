@@ -1,27 +1,11 @@
 // Para crear promesas
 const promesa1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    const usuarios = [
-      {
-        id: 1,
-        nombre: "Pablo",
-        email: "p@gmail.com",
-      },
-      {
-        id: 2,
-        nombre: "Jose",
-        email: "j@gmail.com",
-      },
-      {
-        id: 3,
-        nombre: "Fernando",
-        email: "f@gmail.com",
-      },
-    ];
+    const usuarios = [];
 
     // const edad = 17;
 
-    let correcto = true;
+    let correcto = false;
 
     if (usuarios.length > 0) {
       const resp = {
@@ -48,14 +32,20 @@ const promesa1 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-// Para consumir promesas
-promesa1
-  .then((resultado) => {
-    console.log(resultado);
-  })
-  .catch((error) => {
+const ejecutarPromesa = async () => {
+  try {
+    const resp = await promesa1;
+    console.log(resp);
+  } catch (error) {
     console.log(error);
-  });
-//   .finally(() => {
-//     console.log("Se ejecuto al final de la promesa");
-//   });
+  }
+};
+
+// const ejecutarPromesa = () => {
+//   const resp = promesa1;
+//   console.log(resp);
+
+//   console.log("No espera");
+// };
+
+ejecutarPromesa();
